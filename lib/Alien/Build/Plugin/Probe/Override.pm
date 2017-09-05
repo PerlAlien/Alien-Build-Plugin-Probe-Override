@@ -72,23 +72,26 @@ sub init
   $meta->register_hook(
     override => sub {
       my($build) = @_;
-      
+
       if(Alien::Build::rc->can('override'))
       {
-        my $class = path($build->install_prop->{stage})->basename;
-        if($class =~ /^Alien-/)
+        foreach my $try (qw( stage prefix ))
         {
-          my $override = Alien::Build::rc::override($class);
-          if($override)
+          my $class = path($build->install_prop->{$try})->basename;
+          if($class =~ /^Alien-/)
           {
-            if($override =~ /^(system|share|default)$/)
+            my $override = Alien::Build::rc::override($class);
+            if($override)
             {
-              $build->log("ovveride for $class => $override");
-              return $override;
-            }
-            else
-            {
-              $build->log("override for $class => $override is not valid");
+              if($override =~ /^(system|share|default)$/)
+              {
+                $build->log("ovveride for $class => $override");
+                return $override;
+              }
+              else
+              {
+                $build->log("override for $class => $override is not valid");
+              }
             }
           }
         }
