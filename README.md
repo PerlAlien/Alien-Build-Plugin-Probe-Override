@@ -1,6 +1,6 @@
 # Alien::Build::Plugin::Probe::Override [![Build Status](https://secure.travis-ci.org/plicease/Alien-Build-Plugin-Probe-Override.png)](http://travis-ci.org/plicease/Alien-Build-Plugin-Probe-Override)
 
-Override on a perl-alien basis
+Override on a per-alien basis
 
 # SYNOPSIS
 
@@ -19,7 +19,32 @@ in your `~/.alienbuild/rc.pl`:
 # DESCRIPTION
 
 This [alienfile](https://metacpan.org/pod/alienfile) plugin allows you to override the install type (either
-`share`, `system` or `default`.
+`share`, `system` or `default`.  All you have to do is preload this plugin
+and then provide a subroutine override, which takes a dist name (similar to
+a module name, but with dashes instead of double colon).  It should return
+one of:
+
+- system
+
+    For a system install
+
+- share
+
+    For a share install
+
+- default
+
+    Fallback on the [alienfile](https://metacpan.org/pod/alienfile) default.
+
+- `''`
+
+    Fallback first on `ALIEN_INSTALL_TYPE` and then on the [alienfile](https://metacpan.org/pod/alienfile) default.
+
+# SEE ALSO
+
+- [alienfile](https://metacpan.org/pod/alienfile)
+- [Alien::Build](https://metacpan.org/pod/Alien::Build)
+- [Alien::Build::Plugin::Probe::OverrideCI](https://metacpan.org/pod/Alien::Build::Plugin::Probe::OverrideCI)
 
 # AUTHOR
 

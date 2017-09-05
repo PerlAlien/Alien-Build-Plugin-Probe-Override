@@ -12,4 +12,4 @@ pod_coverage:
   # format is "Class#method" or "Class",regex allowed
   # for either Class or method.
   private:
-    - Alien::Build::Plugin::Probe::Override#init
+    - Alien::Build::Plugin::Probe::.*#init

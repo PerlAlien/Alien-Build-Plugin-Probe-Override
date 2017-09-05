@@ -2,6 +2,7 @@ use Test2::V0 -no_srand => 1;
 sub require_ok ($);
 
 require_ok 'Alien::Build::Plugin::Probe::Override';
+require_ok 'Alien::Build::Plugin::Probe::OverrideCI';
 
 done_testing;
 
