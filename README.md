@@ -19,10 +19,10 @@ in your `~/.alienbuild/rc.pl`:
 # DESCRIPTION
 
 This [alienfile](https://metacpan.org/pod/alienfile) plugin allows you to override the install type (either
-`share`, `system` or `default`.  All you have to do is preload this plugin
-and then provide a subroutine override, which takes a dist name (similar to
-a module name, but with dashes instead of double colon).  It should return
-one of:
+`share`, `system` or `default`) on a per-Alien basis.  All you have to
+do is preload this plugin and then provide a subroutine override, which
+takes a dist name (similar to a module name, but with dashes instead of
+double colon).  It should return one of:
 
 - system
 

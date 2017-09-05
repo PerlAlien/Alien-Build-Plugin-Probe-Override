@@ -26,10 +26,10 @@ in your C<~/.alienbuild/rc.pl>:
 =head1 DESCRIPTION
 
 This L<alienfile> plugin allows you to override the install type (either
-C<share>, C<system> or C<default>.  All you have to do is preload this plugin
-and then provide a subroutine override, which takes a dist name (similar to
-a module name, but with dashes instead of double colon).  It should return
-one of:
+C<share>, C<system> or C<default>) on a per-Alien basis.  All you have to
+do is preload this plugin and then provide a subroutine override, which
+takes a dist name (similar to a module name, but with dashes instead of
+double colon).  It should return one of:
 
 =over 4
 
