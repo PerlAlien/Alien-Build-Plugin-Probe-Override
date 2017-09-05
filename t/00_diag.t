@@ -11,9 +11,7 @@ my $post_diag;
 
 $modules{$_} = $_ for qw(
   Alien::Build
-  Alien::Build::Plugin
   ExtUtils::MakeMaker
-  File::Temp
   File::chdir
   Path::Tiny
   Test2::Mock
