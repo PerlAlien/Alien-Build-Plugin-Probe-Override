@@ -85,7 +85,7 @@ sub init
             {
               if($override =~ /^(system|share|default)$/)
               {
-                $build->log("ovveride for $class => $override");
+                $build->log("override for $class => $override");
                 return $override;
               }
               else
