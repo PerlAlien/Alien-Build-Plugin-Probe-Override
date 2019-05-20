@@ -1,4 +1,4 @@
-# Alien::Build::Plugin::Probe::Override [![Build Status](https://secure.travis-ci.org/plicease/Alien-Build-Plugin-Probe-Override.png)](http://travis-ci.org/plicease/Alien-Build-Plugin-Probe-Override)
+# Alien::Build::Plugin::Probe::Override [![Build Status](https://secure.travis-ci.org/Perl5-Alien/Alien-Build-Plugin-Probe-Override.png)](http://travis-ci.org/Perl5-Alien/Alien-Build-Plugin-Probe-Override)
 
 Override on a per-alien basis
 
