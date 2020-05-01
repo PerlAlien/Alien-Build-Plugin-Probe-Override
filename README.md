@@ -50,7 +50,11 @@ double colon).  It should return one of:
 
 # AUTHOR
 
-Graham Ollis <plicease@cpan.org>
+Author: Graham Ollis <plicease@cpan.org>
+
+Contributors:
+
+Roy Storey (KIWIROY)
 
 # COPYRIGHT AND LICENSE
 
