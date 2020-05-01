@@ -1,4 +1,4 @@
-# Alien::Build::Plugin::Probe::Override [![Build Status](https://secure.travis-ci.org/Perl5-Alien/Alien-Build-Plugin-Probe-Override.png)](http://travis-ci.org/Perl5-Alien/Alien-Build-Plugin-Probe-Override)
+# Alien::Build::Plugin::Probe::Override [![Build Status](https://travis-ci.org/Perl5-Alien/Alien-Build-Plugin-Probe-Override.svg)](http://travis-ci.org/Perl5-Alien/Alien-Build-Plugin-Probe-Override)
 
 Override on a per-alien basis
 
@@ -6,15 +6,17 @@ Override on a per-alien basis
 
 in your `~/.alienbuild/rc.pl`:
 
-    preload 'Probe::Override';
-    
-    sub override {
-      my($dist) = @_;
-      return 'system'  if $dist eq 'Alien-gmake';
-      return 'share'   if $dist eq 'Alien-FFI';
-      return 'default' if $dist eq 'Alien-libuv';  # lets the alienfile choose
-      return ''; # fall back on $ENV{ALIEN_INSTALL_TYPE}
-    };
+```perl
+preload 'Probe::Override';
+
+sub override {
+  my($dist) = @_;
+  return 'system'  if $dist eq 'Alien-gmake';
+  return 'share'   if $dist eq 'Alien-FFI';
+  return 'default' if $dist eq 'Alien-libuv';  # lets the alienfile choose
+  return ''; # fall back on $ENV{ALIEN_INSTALL_TYPE}
+};
+```
 
 # DESCRIPTION
 
