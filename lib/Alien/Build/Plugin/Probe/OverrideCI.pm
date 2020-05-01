@@ -16,7 +16,7 @@ In your .travis.yml:
  language: perl
  
  install:
-   - cpanm -n Alien::Build::Probe::OverrideCI
+   - cpanm -n Alien::Build::Plugin::Probe::OverrideCI
    - cpanm -n --installdeps .
  
  env:
@@ -30,7 +30,7 @@ In your appveyor.yml
 
  install:
    - ... # however you install/select which Perl to use
-   - cpanm -n Alien::Build::Probe::OverrideCI
+   - cpanm -n Alien::Build::Plugin::Probe::OverrideCI
    - cpanm -n --installdeps .
  
  environment:
