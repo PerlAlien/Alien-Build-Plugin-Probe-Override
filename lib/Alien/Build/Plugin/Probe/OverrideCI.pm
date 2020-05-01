@@ -39,6 +39,32 @@ In your appveyor.yml
      - ALIEN_INSTALL_TYPE_CI: share
        ALIEN_INSTALL_TYPE_CI: system
 
+In your .github/workflows/main.yml
+
+  jobs:
+    perl:
+      env:
+        ALIEN_BUILD_PRELOAD: Probe::OverrideCI
+      strategy:
+        matrix:
+          install_type:
+            - share
+            - system
+          perl-version:
+            - '5.30'
+            - '5.16'
+      steps:
+        - uses: actions/checkout@v2
+        - name: Install CI Dependencies
+          run: cpanm -n -q Alien::Build::Plugin::Probe::OverrideCI
+        - name: Install Project Dependencies
+          run: cpanm -n -q --installdeps .
+        - name: Configure Project
+          run: perl Makefile.PL
+          env:
+            ALIEN_INSTALL_TYPE_CI: ${{ matrix.install_type }}
+
+
 =head1 DESCRIPTION
 
 This plugin provides an easy way to test both share and system installs using a
@@ -84,6 +110,10 @@ sub init
   elsif(defined $ENV{APPVEYOR} && $ENV{APPVEYOR} eq 'True' && $ENV{APPVEYOR_BUILD_FOLDER})
   {
     $ci_build_root = path($ENV{APPVEYOR_BUILD_FOLDER})->realpath;
+  }
+  elsif(defined $ENV{GITHUB_ACTIONS} && $ENV{GITHUB_ACTIONS} eq 'true' && $ENV{GITHUB_WORKSPACE})
+  {
+    $ci_build_root = path($ENV{GITHUB_WORKSPACE})->realpath;
   }
   else
   {
