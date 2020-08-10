@@ -11,9 +11,9 @@ use Path::Tiny qw( path );
 alien_rc q{
 
   preload 'Probe::Override';
-  
+
   Alien::Build->log('here');
-  
+
   sub override
   {
     return 'default';
@@ -34,7 +34,7 @@ subtest 'compiles okay' => sub {
 subtest 'override with "default"' => sub {
 
   subtest 'system' => sub {
-  
+
     alienfile_ok q{
       use alienfile;
       probe sub { 'system' };
@@ -45,12 +45,12 @@ subtest 'override with "default"' => sub {
   };
 
   subtest 'share' => sub {
-  
+
     alienfile_ok q{
       use alienfile;
       probe sub { 'share' };
     };
-      
+
     alien_install_type_is 'share';
 
   };
@@ -58,7 +58,7 @@ subtest 'override with "default"' => sub {
 };
 
 my $tmp = tempdir( CLEANUP => 1 );
-  
+
 subtest 'override with "system"' => sub {
 
   my $override_class;
@@ -71,7 +71,7 @@ subtest 'override with "system"' => sub {
       },
     ],
   );
-  
+
   subtest 'system' => sub {
 
     undef $override_class;
@@ -100,7 +100,7 @@ subtest 'override with "system"' => sub {
     is $override_class, 'Alien-libfoo1';
 
   };
-    
+
 };
 
 subtest 'override with "share"' => sub {
@@ -115,7 +115,7 @@ subtest 'override with "share"' => sub {
       },
     ],
   );
-  
+
   subtest 'system' => sub {
 
     undef $override_class;

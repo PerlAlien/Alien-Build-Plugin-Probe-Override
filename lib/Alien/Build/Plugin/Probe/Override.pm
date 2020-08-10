@@ -68,7 +68,7 @@ Fallback first on C<ALIEN_INSTALL_TYPE> and then on the L<alienfile> default.
 sub init
 {
   my($self, $meta) = @_;
-  
+
   $meta->register_hook(
     override => sub {
       my($build) = @_;
@@ -96,7 +96,7 @@ sub init
           }
         }
       }
-      
+
       $ENV{ALIEN_INSTALL_TYPE} || '';
     },
   );
