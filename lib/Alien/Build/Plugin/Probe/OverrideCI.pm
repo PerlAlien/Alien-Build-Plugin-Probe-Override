@@ -70,7 +70,7 @@ In your .github/workflows/main.yml
 This plugin provides an easy way to test both share and system installs using a
 travis or appveyor environment matrix, without affecting the install type detection
 of prereqs.  Thus if your library C<Alien::libfoo> depends on L<Alien::gmake> you
-can test both a system and share install for C<Alien::libfoo> while building 
+can test both a system and share install for C<Alien::libfoo> while building
 L<Alien::gmake> using the default (usually system) install and saving build time.
 
 It does this using the appropriate environment variables from the CI tool to determine
@@ -100,7 +100,7 @@ be useful for you.
 sub init
 {
   my($self, $meta) = @_;
-  
+
   my $ci_build_root;
 
   if(defined $ENV{TRAVIS} && $ENV{TRAVIS} eq 'true' && defined $ENV{TRAVIS_BUILD_DIR})
@@ -127,7 +127,7 @@ sub init
       : $ENV{ALIEN_INSTALL_TYPE}    || '';
 
   #Alien::Build->log("override = $override");
-  
+
   $meta->register_hook(
     override => sub {
       $override;

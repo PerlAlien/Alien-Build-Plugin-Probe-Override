@@ -19,7 +19,7 @@ $dir2->mkpath;
 my %CI = (
   travis => {
     TRAVIS                => 'true',
-    TRAVIS_BUILD_DIR      => $dir1->canonpath, 
+    TRAVIS_BUILD_DIR      => $dir1->canonpath,
   },
   appveyor => {
     APPVEYOR              => 'True',
@@ -34,7 +34,7 @@ my %CI = (
 foreach my $ci (sort keys %CI)
 {
   subtest $ci => sub {
-  
+
     local %ENV = %ENV;
     foreach my $key (sort keys %{ $CI{$ci} })
     {
@@ -43,25 +43,25 @@ foreach my $ci (sort keys %CI)
       $ENV{$key} = $value;
     }
     $ENV{ALIEN_BUILD_PRELOAD} = 'Probe::OverrideCI';
-  
+
     subtest 'in build root' => sub {
-    
+
       local $CWD = $dir1->stringify;
 
       subtest 'system' => sub {
 
         local $ENV{ALIEN_INSTALL_TYPE} = 'share';
         local $ENV{ALIEN_INSTALL_TYPE_CI} = 'system';
-      
+
         alienfile_ok q{
           use alienfile;
           probe sub { 'system' };
         };
-        
+
         alien_install_type_is 'system';
-      
+
       };
-      
+
       subtest 'share' => sub {
 
         local $ENV{ALIEN_INSTALL_TYPE_CI} = 'share';
@@ -74,41 +74,41 @@ foreach my $ci (sort keys %CI)
         alien_install_type_is 'share';
 
       };
-      
-    };  
-    
+
+    };
+
     subtest 'out of build root' => sub {
-    
+
       local $CWD = $dir2;
-      
+
       subtest 'system' => sub {
-      
+
         local $ENV{ALIEN_INSTALL_TYPE_CI} = 'system';
-        
+
         alienfile_ok q{
           use alienfile;
           probe sub { 'share' };
         };
-        
+
         alien_install_type_is 'share';
-      
+
       };
-      
+
       subtest 'share' => sub {
-      
+
         local $ENV{ALIEN_INSTALL_TYPE_CI} = 'share';
-        
+
         alienfile_ok q{
           use alienfile;
           probe sub { 'system' };
         };
-        
+
         alien_install_type_is 'system';
-      
+
       };
-    
+
     };
-  
+
   };
 }
 
